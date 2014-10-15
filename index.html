@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Spelling Practice</title>
+</head>
+<body>
+	<div id="test"></div>
+	<h1>Practice Spelling</h1>
+	<form>
+	</form>
+	<script id="wordtest-template" type="text/x-handlebars-template">
+	  <audio src="audio/{{word}}.mp4" controls></audio>
+		<p>
+			<label for="word">Spell The Word: </label>
+			<input type="text" name="word" id="word" data-word="{{word}}">
+		</p>
+		<p><input type="submit" name="check" value="Check Spelling"></p>
+		<p>{{current}} of {{total}} words</p>
+	</script>
+	<script src="jquery-2.1.1.min.js"></script>
+	<script src="handlebars-v2.0.0.js"></script>
+	<script src="words-min.js"></script>
+</body>
+</html>
