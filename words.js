@@ -43,7 +43,10 @@
 	};
 
 	var showComplete = function() {
-		var html = "<h3>You spelled " + correct + " correctly out of " + totalWordsInList + "</h3>";
+		var incorrectSource = $('#incorrect-words-template').html();
+		var incorrect_tpl = Handlebars.compile(incorrectSource);
+		var html = incorrect_tpl({ words: incorrect_words, correct: correct, totalWordsInList: totalWordsInList});
+
 		$('form').html(html);
 	};
 
@@ -73,10 +76,11 @@
 					'danger'
 					];
 
-	var totalWordsInList = wordlist.length;
-	var currentWord = 0;
-	var correct = 0;
-	var incorrect = 0;
+	var totalWordsInList = wordlist.length,
+		currentWord = 0,
+		correct = 0,
+		incorrect = 0,
+		incorrect_words = [];
 
 	shuffle(wordlist);
 
@@ -92,6 +96,7 @@
 		if(attempt === word) {
 			spelledCorrectPopUp(word);
 		} else {
+			incorrect_words.push(word);
 			spelledInCorrectPopUp(word,attempt);
 		}
 	});

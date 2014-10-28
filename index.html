@@ -18,8 +18,17 @@
 		<p><input type="submit" name="check" value="Check Spelling"></p>
 		<p>{{current}} of {{total}} words</p>
 	</script>
+	<script id="incorrect-words-template" type="text/x-handlebars-template">
+	<h3>You spelled {{correct}} correctly out of {{totalWordsInList}}</h3>
+	<h4>These words need more practice:</h4>
+	  <ul>
+	  	{{#each words}}
+	  	<li>{{this}}</li>
+	  	{{/each}}
+	  </ul>
+	</script>
 	<script src="jquery-2.1.1.min.js"></script>
 	<script src="handlebars-v2.0.0.js"></script>
-	<script src="words-min.js"></script>
+	<script src="words.js"></script>
 </body>
 </html>
