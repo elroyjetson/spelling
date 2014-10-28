@@ -43,9 +43,15 @@
 	};
 
 	var showComplete = function() {
-		var incorrectSource = $('#incorrect-words-template').html();
-		var incorrect_tpl = Handlebars.compile(incorrectSource);
-		var html = incorrect_tpl({ words: incorrect_words, correct: correct, totalWordsInList: totalWordsInList});
+		if(incorrect_words.length > 0) {
+			var incorrectSource = $('#incorrect-words-template').html();
+			var incorrect_tpl = Handlebars.compile(incorrectSource);
+			var html = incorrect_tpl({ words: incorrect_words, correct: correct, totalWordsInList: totalWordsInList});
+		} else {
+			var allCorrectSource = $('#all-correct-template').html();
+			var allCorrect_tpl = Handlebars.compile(allCorrectSource);
+			var html = allCorrect_tpl({ correct: correct, totalWordsInList: totalWordsInList});
+		}
 
 		$('form').html(html);
 	};
